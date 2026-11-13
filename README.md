@@ -56,7 +56,7 @@ Or add it yourself:
 
 ```bash
 claude mcp add --env MESER10_API_KEY=your-key --env MESER10_USER_ID=your-account-number \
-  --env MESER10_MODE=read --transport stdio meser10 -- npx -y @meser10/mcp-server
+  --env MESER10_MODE=read --transport stdio meser10 -- npx -y @meser10/mcp-server@1.0.2
 ```
 
 The server starts read-only. Writing, sending and deleting are separate levels that you open yourself. Details: https://www.meser10.co.il/features/mcp-server/ and https://github.com/meser10/meser10-mcp

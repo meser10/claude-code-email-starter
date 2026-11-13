@@ -13,5 +13,6 @@ const r = await fetch('https://heb.mesereser.com/Services/JsonServices.aspx?f=Se
 const text = await r.text();
 let res;
 try { res = JSON.parse(text); } catch { console.error('The request was blocked before it reached the API (HTTP ' + r.status + '). Check the User-Agent header and the IP allow-list of the account.'); process.exit(1); }
-if (Number(res.ErrorCode) !== 0) { console.error('Not sent. ErrorCode ' + res.ErrorCode + ': ' + (res.Message || res.Result || '')); process.exit(1); }
+const ec = res ? res.ErrorCode : undefined;
+if (ec === undefined || ec === null || ec === '' || Number(ec) !== 0) { console.error('Not sent. ErrorCode ' + res.ErrorCode + ': ' + (res.Message || res.Result || '')); process.exit(1); }
 console.log('Accepted for sending.');

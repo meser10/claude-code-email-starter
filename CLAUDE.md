@@ -11,7 +11,7 @@ This project sends email and SMS through the Meser 10 JSON API. Follow these rul
 
 ## Reading the answer
 
-- Every call returns HTTP 200, also when it failed. Decide by `ErrorCode` only. Normalize it with `Number()` first: some functions return it as a string.
+- Every call returns HTTP 200, also when it failed. Decide by `ErrorCode` only. Normalize it with `Number()` first: some functions return it as a string. A missing or empty `ErrorCode` is a failure, not a success.
 - `0` success. `1` key wrong, missing or revoked: stop, do not retry in a loop. `3` payload could not be processed, most often a missing required field. `4` a parameter is missing or invalid; for SMS it also means the sender name is not verified. `6` unknown function name.
 - If the body is not JSON, treat it as a blocked request (User-Agent or IP allow-list), not as an API answer.
 
@@ -34,7 +34,7 @@ Fields: `ToPhone`, `MessageBody`, `FromName`.
 
 Do not loop the single-message call over a list for marketing mail. Lists, campaigns and reports go through the Meser 10 MCP server (see `mcp.example.json`, read-only by default) or the SOAP service.
 
-Before any real send to more than one person, show me the text and the recipients and wait for my yes.
+Before any real send, also to one person, show me the text and the recipients and wait for my yes.
 
 ## Dates
 
