@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "meser10": {
+      "command": "npx",
+      "args": ["-y", "@meser10/mcp-server"],
+      "env": {
+        "MESER10_API_KEY": "${MESER10_API_KEY}",
+        "MESER10_USER_ID": "${MESER10_USER_ID}",
+        "MESER10_MODE": "read"
+      }
+    }
+  }
+}
